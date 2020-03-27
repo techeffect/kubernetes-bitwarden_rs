@@ -24,7 +24,7 @@ spec:
         runAsUser: 33
       containers:
       - image: mprasil/bitwarden:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: bitwarden
         envFrom:
         - configMapRef:
@@ -57,13 +57,3 @@ spec:
           requests:
             cpu: 50m
             memory: 256Mi
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes:
-        - "ReadWriteOnce"
-      resources:
-        requests:
-          storage: "15Gi"
-      storageClassName: default
